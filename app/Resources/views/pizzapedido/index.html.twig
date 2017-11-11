@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pizzapedidos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idpizzapedido</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pizzapedido in pizzapedidos %}
+            <tr>
+                <td>{{ pizzapedido.idPedido.idPedido }}</td>
+
+                <td>{{ pizzapedido.idPizza.nombre }}</td>
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pizzapedido_show', { 'idpizzapedido': pizzapedido.idpizzapedido }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pizzapedido_edit', { 'idpizzapedido': pizzapedido.idpizzapedido }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pizzapedido_new') }}">Create a new pizzapedido</a>
+        </li>
+    </ul>
+{% endblock %}

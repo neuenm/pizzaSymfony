@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pizzas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idpizza</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pizza in pizzas %}
+            <tr>
+                <td><a href="{{ path('pizza_show', { 'idpizza': pizza.idpizza }) }}">{{ pizza.idpizza }}</a></td>
+                <td>{{ pizza.nombre }}</td>
+                <td>{{ pizza.precio }}</td>
+                <td>{{ pizza.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pizza_show', { 'idpizza': pizza.idpizza }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pizza_edit', { 'idpizza': pizza.idpizza }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pizzapedido_agregar_pizza', { 'idpizza': pizza.idpizza }) }}">Agregar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pizza_new') }}">Create a new pizza</a>
+        </li>
+        <li>
+            <a href="{{ path('pizzapedido_confirma') }}">Confirma</a>
+        </li>
+        <li>
+            <a href="{{ path('pizzapedido_cart') }}">Ver Carrito</a>
+        </li>
+    </ul>
+{% endblock %}

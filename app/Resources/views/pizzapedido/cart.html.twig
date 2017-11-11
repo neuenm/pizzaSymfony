@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Carrito</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for pizza in cart %}
+            <tr>
+                <td> {{ pizza.nombre }}</td>
+
+                <td> {{ pizza.descripcion }}</td>
+
+                <td> {{ pizza.precio }}</td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('pizza_index') }}">Volver</a>
+        </li>
+    </ul>
+{% endblock %}
